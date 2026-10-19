@@ -107,6 +107,30 @@ app.post('/webhook', (req, res) => {
 
 app.get('/health', (_req, res) => res.send('ok'));
 
+// Privacy policy page (required by Meta to switch the app to Live mode)
+app.get('/privacy', (_req, res) => {
+  res.send(
+    '<!doctype html><html lang="en"><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<title>DriveBot — Privacy Policy</title></head>' +
+    '<body style="font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px">' +
+    '<h1>DriveBot — Privacy Policy</h1>' +
+    '<p><b>Last updated:</b> October 2026</p>' +
+    '<p>DriveBot is a personal WhatsApp bot that searches your Google Drive and sends you files on request.</p>' +
+    '<h3>Data we collect</h3>' +
+    '<ul><li>Your WhatsApp phone number and the text of messages you send to the bot (needed to reply to you).</li>' +
+    '<li>Google Drive file names and metadata from the Google account you connect (needed to search your Drive).</li></ul>' +
+    '<h3>How we use it</h3>' +
+    '<p>Your data is used only to operate the bot: receiving your WhatsApp messages and searching your Google Drive. ' +
+    'We do not sell, rent, or share your data with third parties for marketing.</p>' +
+    '<h3>Data storage</h3>' +
+    '<p>Messages are processed in memory and not stored. Google Drive access uses OAuth tokens stored securely on our hosting provider.</p>' +
+    '<h3>Contact</h3>' +
+    '<p>For privacy questions, contact: shaizalhafeez@gmail.com</p>' +
+    '</body></html>'
+  );
+});
+
 // Public homepage (so the public URL validates as a real website)
 app.get('/', (_req, res) => {
   res.send(
