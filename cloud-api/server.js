@@ -107,6 +107,22 @@ app.post('/webhook', (req, res) => {
 
 app.get('/health', (_req, res) => res.send('ok'));
 
+// Public homepage (so the public URL validates as a real website)
+app.get('/', (_req, res) => {
+  res.send(
+    '<!doctype html><html lang="en"><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<title>DriveBot — WhatsApp Google Drive Search</title></head>' +
+    '<body style="font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px">' +
+    '<h1>DriveBot</h1>' +
+    '<p>WhatsApp bot that searches your Google Drive and sends you files instantly.</p>' +
+    '<p>Message the bot on WhatsApp with commands like <b>dhoondo &lt;filename&gt;</b>, ' +
+    '<b>bhejo &lt;n&gt;</b>, <b>link &lt;n&gt;</b> or <b>madad</b>.</p>' +
+    '<p style="color:#666">Service status: <a href="/health">operational</a></p>' +
+    '</body></html>'
+  );
+});
+
 // ---- Google Drive OAuth (DRIVE_BACKEND=oauth) ----
 // 1. Visit /oauth -> Google consent screen -> redirect back to /oauth/callback
 // 2. Callback shows a refresh token -> save it as GOOGLE_REFRESH_TOKEN env var -> redeploy
