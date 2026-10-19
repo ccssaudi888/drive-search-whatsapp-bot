@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: drive-search-whatsapp-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start:cloud
+    envVars:
+      - key: DRIVE_BACKEND
+        value: oauth
+      - key: VERIFY_TOKEN
+        generateValue: true
+      - key: PUBLIC_URL
+        sync: false
+      - key: WHATSAPP_TOKEN
+        sync: false
+      - key: PHONE_NUMBER_ID
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
